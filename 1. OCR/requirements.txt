@@ -1,0 +1,8 @@
+PyMuPDF>=1.24
+Pillow
+huggingface_hub
+doclayout-yolo==0.0.3
+transformers>=5.2  # Qwen3.5 architecture support landed in transformers v5.2
+accelerate
+torch
+python-pptx  # only for make_slides.py, not the pipeline itself

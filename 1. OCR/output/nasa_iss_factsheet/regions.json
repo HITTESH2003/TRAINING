@@ -1,0 +1,184 @@
+[
+  {
+    "page": 1,
+    "class": "title",
+    "score": 0.8028,
+    "bbox": [
+      251.7,
+      246.4,
+      1041.9,
+      322.0
+    ],
+    "text": "NASA INFORMATION",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.7909,
+    "bbox": [
+      250.4,
+      325.4,
+      537.7,
+      385.1
+    ],
+    "text": "National Aeronautics and Space Administration",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.914,
+    "bbox": [
+      251.3,
+      415.0,
+      660.5,
+      505.6
+    ],
+    "text": "Lyndon B. Johnson Space Center\nHouston, Texas 77058\n281/483-5111",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "title",
+    "score": 0.9377,
+    "bbox": [
+      565.0,
+      600.7,
+      1137.6,
+      657.5
+    ],
+    "text": "Space Station Overview",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9651,
+    "bbox": [
+      249.6,
+      695.9,
+      1416.4,
+      810.9
+    ],
+    "text": "What's up --way up --and changing the way we know life here on Earth? It's the International Space Station. The Space Station is the ultimate place of discovery and NASA's showcase project.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9728,
+    "bbox": [
+      248.7,
+      849.1,
+      1449.7,
+      1040.7
+    ],
+    "text": "It's also home to astronauts and cosmonauts who are operating the spacecraft and conducting scientific research to help improve life here on Earth. They are gaining a wealth of experience that will be beneficial for longer missions to the Moon and Mars. The Space Station is an orbital laboratory where everything floats.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9684,
+    "bbox": [
+      248.5,
+      1078.9,
+      1426.9,
+      1230.6
+    ],
+    "text": "This is important because it changes almost everything we have learned, built and accomplished as humans within the confining box of gravity. The first nine crews of the Space Station have performed research that can be done nowhere else.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9639,
+    "bbox": [
+      248.1,
+      1270.4,
+      1439.3,
+      1385.2
+    ],
+    "text": "More than 75 experiments involving scientific disciplines\u2014such as human physiology, genetics, plant biology, Earth observations, physics and cell biology\u2014have been conducted aboard this lab in space.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9734,
+    "bbox": [
+      247.9,
+      1423.1,
+      1442.6,
+      1654.2
+    ],
+    "text": "It\u2019s not just Americans who are studying life beyond. NASA\u2019s international partners include the Canadian Space Agency, the European Space Agency, the Russian Federal Space Agency, and the Japan Aerospace Exploration Agency. The Space Station gives us the knowledge we need to step farther into space, explore uncharted planets and find life beyond what we know today.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9414,
+    "bbox": [
+      249.2,
+      1693.1,
+      1325.7,
+      1767.2
+    ],
+    "text": "Crewmembers on board the Space Station hope to help scientists discover answers to these five fundamental questions:",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.8471,
+    "bbox": [
+      405.0,
+      1769.9,
+      1405.5,
+      1962.9
+    ],
+    "text": "How can we assure the survival of humans traveling from Earth?\nWhat must we know about how space changes life forms so that humankind will flourish?\nWhat new opportunities can our research bring to enrich lives on Earth and expand understanding of the laws of nature?",
+    "low_confidence": false
+  },
+  {
+    "page": 2,
+    "class": "plain text",
+    "score": 0.3036,
+    "bbox": [
+      248.1,
+      104.2,
+      573.8,
+      137.9
+    ],
+    "text": "Space Station Overview",
+    "low_confidence": true
+  },
+  {
+    "page": 2,
+    "class": "plain text",
+    "score": 0.9075,
+    "bbox": [
+      401.1,
+      200.7,
+      1436.7,
+      354.4
+    ],
+    "text": "What technology must we create to enable the next explorers to go\nbeyond where we have been?\nHow can we educate and inspire the next generation to make the\njourney?",
+    "low_confidence": false
+  },
+  {
+    "page": 2,
+    "class": "plain text",
+    "score": 0.9599,
+    "bbox": [
+      248.9,
+      391.5,
+      1433.7,
+      545.7
+    ],
+    "text": "In addition to this, did you know that there are many benefits from NASA research? From child safety devices to advances in medical technology, NASA-funded research has led to many products that benefit life on Earth. These and many other wonderful happenings are all part of the NASA mission.",
+    "low_confidence": false
+  }
+]

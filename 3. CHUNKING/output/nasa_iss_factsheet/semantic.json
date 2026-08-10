@@ -1,0 +1,132 @@
+[
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0000",
+    "strategy": "semantic",
+    "text": "NASA INFORMATION\nNational Aeronautics and Space Administration",
+    "token_count": 11,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "heading",
+      "paragraph"
+    ],
+    "boundary_similarity": 0.330078125,
+    "notes": []
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0001",
+    "strategy": "semantic",
+    "text": "Lyndon B. Johnson Space Center\nHouston, Texas 77058\n281/483-5111",
+    "token_count": 30,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": 0.353515625,
+    "notes": []
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0002",
+    "strategy": "semantic",
+    "text": "Space Station Overview\nWhat's up --way up --and changing the way we know life here on Earth? It's the International Space Station. The Space Station is the ultimate place of discovery and NASA's showcase project.\nIt's also home to astronauts and cosmonauts who are operating the spacecraft and conducting scientific research to help improve life here on Earth. They are gaining a wealth of experience that will be beneficial for longer missions to the Moon and Mars. The Space Station is an orbital laboratory where everything floats.\nThis is important because it changes almost everything we have learned, built and accomplished as humans within the confining box of gravity. The first nine crews of the Space Station have performed research that can be done nowhere else.\nMore than 75 experiments involving scientific disciplines\u2014such as human physiology, genetics, plant biology, Earth observations, physics and cell biology\u2014have been conducted aboard this lab in space.",
+    "token_count": 186,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "heading",
+      "paragraph",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "boundary_similarity": 0.53125,
+    "notes": [
+      "over_budget"
+    ]
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0003",
+    "strategy": "semantic",
+    "text": "It\u2019s not just Americans who are studying life beyond. NASA\u2019s international partners include the Canadian Space Agency, the European Space Agency, the Russian Federal Space Agency, and the Japan Aerospace Exploration Agency. The Space Station gives us the knowledge we need to step farther into space, explore uncharted planets and find life beyond what we know today.\nCrewmembers on board the Space Station hope to help scientists discover answers to these five fundamental questions:",
+    "token_count": 88,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph",
+      "paragraph"
+    ],
+    "boundary_similarity": 0.4609375,
+    "notes": []
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0004",
+    "strategy": "semantic",
+    "text": "How can we assure the survival of humans traveling from Earth?\nWhat must we know about how space changes life forms so that humankind will flourish?\nWhat new opportunities can our research bring to enrich lives on Earth and expand understanding of the laws of nature?",
+    "token_count": 52,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": 0.373046875,
+    "notes": []
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0005",
+    "strategy": "semantic",
+    "text": "Space Station Overview",
+    "token_count": 3,
+    "section_path": null,
+    "pages": [
+      2
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": 0.328125,
+    "notes": [
+      "contains_low_confidence_region"
+    ]
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0006",
+    "strategy": "semantic",
+    "text": "What technology must we create to enable the next explorers to go\nbeyond where we have been?\nHow can we educate and inspire the next generation to make the\njourney?",
+    "token_count": 38,
+    "section_path": null,
+    "pages": [
+      2
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": 0.3671875,
+    "notes": []
+  },
+  {
+    "chunk_id": "nasa_iss_factsheet__semantic__0007",
+    "strategy": "semantic",
+    "text": "In addition to this, did you know that there are many benefits from NASA research? From child safety devices to advances in medical technology, NASA-funded research has led to many products that benefit life on Earth. These and many other wonderful happenings are all part of the NASA mission.",
+    "token_count": 56,
+    "section_path": null,
+    "pages": [
+      2
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": null,
+    "notes": []
+  }
+]

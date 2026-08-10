@@ -1,0 +1,6 @@
+Module 1: Data Processing
+Data Extraction using OCR
+Post-processing (Validation & Cleaning)
+Metadata Analysis & Extraction
+
+so i wan this to be prepared as a eperimnet for an class of studetns where when given a pdf what must be done step by step from pdf to image to what all classes can be idenitided in a pdf image ( words, images-graphs,charts, tables, artifacts - logos, signatures,stamps seals,) how to handle them in our scenario we are going to use an small DOc Lyout + Vision language model so the words are extracted and stored as a markdown file and tables are supposed to be extracted and stored as html in the mardown file and the images can get an description 

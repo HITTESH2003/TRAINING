@@ -1,0 +1,143 @@
+{
+  "pdf_metadata": {
+    "page_count": 3,
+    "format": "PDF 1.7",
+    "creator": "govinfo, U. S. Government Publishing Office",
+    "producer": "iText\u00ae Core 9.2.0 (production version) \u00a92000-2025 Apryse Group NV, Government Publishing Office",
+    "creationDate": "D:20260124063143Z",
+    "modDate": "D:20260124013438-05'00'"
+  },
+  "region_class_counts": {
+    "title": 5,
+    "plain text": 18,
+    "figure": 1
+  },
+  "artifacts_detected": [
+    {
+      "page": 3,
+      "type": "signature",
+      "description": "A handwritten signature in black ink, appearing to be \"A. M. M. M.\"",
+      "bbox": [
+        1290.1,
+        286.3,
+        1563.5,
+        470.5
+      ]
+    }
+  ],
+  "low_confidence_regions": [
+    {
+      "page": 1,
+      "class": "plain text",
+      "score": 0.2573,
+      "bbox": [
+        573.6,
+        338.0,
+        1118.0,
+        371.3
+      ]
+    }
+  ],
+  "dropped_regions": [
+    {
+      "page": 1,
+      "class": "abandon",
+      "score": 0.8628,
+      "bbox": [
+        116.4,
+        31.5,
+        229.3,
+        89.2
+      ]
+    },
+    {
+      "page": 1,
+      "class": "abandon",
+      "score": 0.89,
+      "bbox": [
+        1505.1,
+        94.2,
+        1575.9,
+        121.2
+      ]
+    },
+    {
+      "page": 1,
+      "class": "abandon",
+      "score": 0.2583,
+      "bbox": [
+        123.7,
+        134.4,
+        413.1,
+        278.8
+      ]
+    },
+    {
+      "page": 1,
+      "class": "abandon",
+      "score": 0.2744,
+      "bbox": [
+        123.8,
+        248.1,
+        409.7,
+        276.3
+      ]
+    },
+    {
+      "page": 1,
+      "class": "abandon",
+      "score": 0.6077,
+      "bbox": [
+        124.4,
+        341.7,
+        246.8,
+        373.9
+      ]
+    },
+    {
+      "page": 2,
+      "class": "abandon",
+      "score": 0.6647,
+      "bbox": [
+        123.3,
+        94.2,
+        194.7,
+        121.1
+      ]
+    },
+    {
+      "page": 2,
+      "class": "abandon",
+      "score": 0.8968,
+      "bbox": [
+        282.1,
+        94.3,
+        1400.7,
+        125.1
+      ]
+    },
+    {
+      "page": 3,
+      "class": "abandon",
+      "score": 0.9014,
+      "bbox": [
+        299.7,
+        93.7,
+        1402.5,
+        125.9
+      ]
+    },
+    {
+      "page": 3,
+      "class": "abandon",
+      "score": 0.6623,
+      "bbox": [
+        1504.6,
+        94.3,
+        1575.5,
+        120.9
+      ]
+    }
+  ],
+  "malformed_table_count": 0
+}

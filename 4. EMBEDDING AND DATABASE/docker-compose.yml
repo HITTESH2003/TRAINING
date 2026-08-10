@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: embedding_module_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: embedding_student
+      POSTGRES_PASSWORD: embedding_student
+      POSTGRES_DB: embeddings
+    ports:
+      # host 5433 -> container 5432, deliberately not the default host port so
+      # this never collides with a Postgres you might already have running
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U embedding_student -d embeddings"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

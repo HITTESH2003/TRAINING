@@ -1,0 +1,63 @@
+[
+  {
+    "top_k": 1,
+    "docs_represented": [
+      "federal_register_proclamation"
+    ],
+    "num_docs_represented": 1,
+    "prompt_tokens": 245,
+    "context_budget_used_pct": 0.75,
+    "answer": "This collection of documents covers the actions taken by the President during his first term, including the declaration of a national emergency, designation of cartels as foreign terrorist organizations, border wall construction, implementation of the Remain in Mexico policy, halting catch-and-release, ending asylum for illegal border crossers, and deploying soldiers to protect the southern border d\u01b0.",
+    "generation_time_s": 2.88
+  },
+  {
+    "top_k": 3,
+    "docs_represented": [
+      "federal_register_proclamation",
+      "nasa_iss_factsheet"
+    ],
+    "num_docs_represented": 2,
+    "prompt_tokens": 516,
+    "context_budget_used_pct": 1.57,
+    "answer": "This collection of documents covers the duties and actions taken by the individual in their role as a federal officer, as well as the benefits and significance of NASA research and the International Space Station.",
+    "generation_time_s": 2.16
+  },
+  {
+    "top_k": 6,
+    "docs_represented": [
+      "federal_register_proclamation",
+      "nasa_iss_factsheet"
+    ],
+    "num_docs_represented": 2,
+    "prompt_tokens": 1044,
+    "context_budget_used_pct": 3.19,
+    "answer": "The collection of documents covers topics related to American policy and initiatives, including the declaration of a national emergency, the rebuilding of American manufacturing, the implementation of the One Big Beautiful Bill, the Space Station program, and the restoration of American strength on the world stage.",
+    "generation_time_s": 3.58
+  },
+  {
+    "top_k": 10,
+    "docs_represented": [
+      "federal_register_proclamation",
+      "nasa_iss_factsheet",
+      "synthetic_sample"
+    ],
+    "num_docs_represented": 3,
+    "prompt_tokens": 1560,
+    "context_budget_used_pct": 4.76,
+    "answer": "The collection of documents covers a variety of topics, including:\n\n1. **Federal Proclamation** (sources [1], [4], [6], [8], [9]): These documents highlight the administration's efforts to promote American values, restore national sovereignty, and strengthen the country's identity. They mention efforts to rebuild manufacturing, secure American infrastructure Continuity, and reassert American strength globally.\n\n2. **Space Station Overview** (sources [3], [5], [6]): These documents describe the International Space Station (ISS), emphasizing its role in space exploration, scientific research, and international collaboration. They also mention the benefits of the ISS for human survival, discovery, and future missions.\n\n3. **NASA ResearchGrammar** (sources [2], [3], [5]): These documents provide information about NASA's contributions to life on Earth, including advancements in medical technology and child safety devices, as well as the significance of the ISS in space research.\n\n4. **Operations Report** (source [7]): This document summarizes regional operational output for the third quarter, highlighting improvements in shift coverage and reduced equipment downtime.\n\n5. **Proclamation 11005** (source [10]): This document outlines the proclamation of January",
+    "generation_time_s": 51.36
+  },
+  {
+    "top_k": 18,
+    "docs_represented": [
+      "federal_register_proclamation",
+      "nasa_iss_factsheet",
+      "synthetic_sample"
+    ],
+    "num_docs_represented": 3,
+    "prompt_tokens": 2712,
+    "context_budget_used_pct": 8.28,
+    "answer": "The collection of documents covers a range of topics, including the administration's policies and actions, the restoration of American values, and the achievements of theissan space station, as well as efforts to address economic and social challenges.",
+    "generation_time_s": 7.44
+  }
+]

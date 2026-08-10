@@ -1,0 +1,179 @@
+[
+  {
+    "page": 1,
+    "class": "title",
+    "score": 0.9245,
+    "bbox": [
+      164.9,
+      161.9,
+      950.4,
+      228.3
+    ],
+    "text": "Q3 Regional Operations Report",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9631,
+    "bbox": [
+      163.6,
+      391.3,
+      1486.4,
+      520.3
+    ],
+    "text": "This report summarizes regional operational output for the third quarter. Overall throughput increased across three of the four monitored regions, driven primarily by expanded shift coverage and reduced equipment downtime.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.9492,
+    "bbox": [
+      163.9,
+      613.3,
+      1478.4,
+      698.7
+    ],
+    "text": "Region B continues to lead in total output, while Region A shows the largest quarter-over-quarter improvement. Details for each region are provided in the table below.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "table_caption",
+    "score": 0.9234,
+    "bbox": [
+      163.4,
+      801.9,
+      700.8,
+      836.1
+    ],
+    "text": "Table 1. Output by region, in thousands of units.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "table",
+    "score": 0.9721,
+    "bbox": [
+      163.7,
+      861.1,
+      1364.9,
+      1233.0
+    ],
+    "text": "<table border=\"1\">\n\t<tr>\n\t\t<th>Region</th>\n\t\t<th>Q2</th>\n\t\t<th>Q3</th>\n\t\t<th>Change</th>\n\t</tr>\n\t<tr>\n\t\t<td>Region A</td>\n\t\t<td>31</td>\n\t\t<td>42</td>\n\t\t<td>+35%</td>\n\t</tr>\n\t<tr>\n\t\t<td>Region B</td>\n\t\t<td>60</td>\n\t\t<td>68</td>\n\t\t<td>+13%</td>\n\t</tr>\n\t<tr>\n\t\t<td>Region C</td>\n\t\t<td>55</td>\n\t\t<td>51</td>\n\t\t<td>-7%</td>\n\t</tr>\n\t<tr>\n\t\t<td>Region D</td>\n\t\t<td>70</td>\n\t\t<td>77</td>\n\t\t<td>+10%</td>\n\t</tr>\n</table>",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.8216,
+    "bbox": [
+      928.5,
+      1285.0,
+      1396.8,
+      1318.4
+    ],
+    "text": "Efficiency = Output / (Hours x Headcount)",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "figure_caption",
+    "score": 0.3009,
+    "bbox": [
+      435.7,
+      1313.6,
+      765.1,
+      1352.8
+    ],
+    "text": "q3 regional output",
+    "low_confidence": true
+  },
+  {
+    "page": 1,
+    "class": "figure",
+    "score": 0.9226,
+    "bbox": [
+      184.9,
+      1336.3,
+      922.1,
+      1756.5
+    ],
+    "text": "A bar chart titled \"Q5 Regional Output\" displays four regions (Region A, B, C, D) with corresponding unit values ranging from 40 to 80,000 units.",
+    "low_confidence": false,
+    "extra": {
+      "path": "images/page001_region009.png",
+      "figure_type": "chart"
+    }
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.8272,
+    "bbox": [
+      925.9,
+      1346.4,
+      1503.1,
+      1380.1
+    ],
+    "text": "Eq. 1. Efficiency ratio used for regional comparison.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "figure_caption",
+    "score": 0.852,
+    "bbox": [
+      162.2,
+      1790.4,
+      504.5,
+      1825.4
+    ],
+    "text": "Figure 1. Regional output, Q3.",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "figure",
+    "score": 0.6785,
+    "bbox": [
+      203.0,
+      1900.0,
+      683.8,
+      1983.7
+    ],
+    "text": "A blue zigzag line representing a graph or waveform.",
+    "low_confidence": false,
+    "extra": {
+      "path": "images/page001_region013.png",
+      "figure_type": "diagram"
+    }
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.8045,
+    "bbox": [
+      164.6,
+      2040.5,
+      452.5,
+      2070.6
+    ],
+    "text": "J. Alvarez, Regional Director",
+    "low_confidence": false
+  },
+  {
+    "page": 1,
+    "class": "plain text",
+    "score": 0.6269,
+    "bbox": [
+      163.7,
+      2111.5,
+      814.7,
+      2143.6
+    ],
+    "text": "Internal use only | Page 1 of 1 | Doc ID: SAMPLE-2026-Q3-001",
+    "low_confidence": false
+  }
+]

@@ -1,0 +1,135 @@
+[
+  {
+    "chunk_id": "synthetic_sample__semantic__0000",
+    "strategy": "semantic",
+    "text": "Q3 Regional Operations Report\nThis report summarizes regional operational output for the third quarter. Overall throughput increased across three of the four monitored regions, driven primarily by expanded shift coverage and reduced equipment downtime.\nRegion B continues to lead in total output, while Region A shows the largest quarter-over-quarter improvement. Details for each region are provided in the table below.\nTable 1. Output by region, in thousands of units.",
+    "token_count": 85,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "heading",
+      "paragraph",
+      "paragraph",
+      "paragraph"
+    ],
+    "boundary_similarity": null,
+    "notes": []
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0001",
+    "strategy": "semantic",
+    "text": "<table border=\"1\">\n\t<tr>\n\t\t<th>Region</th>\n\t\t<th>Q2</th>\n\t\t<th>Q3</th>\n\t\t<th>Change</th>\n\t</tr>\n\t<tr>\n\t\t<td>Region A</td>\n\t\t<td>31</td>\n\t\t<td>42</td>\n\t\t<td>+35%</td>\n\t</tr>\n\t<tr>\n\t\t<td>Region B</td>\n\t\t<td>60</td>\n\t\t<td>68</td>\n\t\t<td>+13%</td>\n\t</tr>\n\t<tr>\n\t\t<td>Region C</td>\n\t\t<td>55</td>\n\t\t<td>51</td>\n\t\t<td>-7%</td>\n\t</tr>\n\t<tr>\n\t\t<td>Region D</td>\n\t\t<td>70</td>\n\t\t<td>77</td>\n\t\t<td>+10%</td>\n\t</tr>\n</table>",
+    "token_count": 251,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "table"
+    ],
+    "boundary_similarity": null,
+    "notes": [
+      "atomic_block"
+    ]
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0002",
+    "strategy": "semantic",
+    "text": "Efficiency = Output / (Hours x Headcount)\nq3 regional output",
+    "token_count": 16,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph",
+      "paragraph"
+    ],
+    "boundary_similarity": null,
+    "notes": [
+      "contains_low_confidence_region"
+    ]
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0003",
+    "strategy": "semantic",
+    "text": "A bar chart titled \"Q5 Regional Output\" displays four regions (Region A, B, C, D) with corresponding unit values ranging from 40 to 80,000 units.",
+    "token_count": 42,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "figure"
+    ],
+    "boundary_similarity": null,
+    "notes": [
+      "atomic_block"
+    ]
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0004",
+    "strategy": "semantic",
+    "text": "Eq. 1. Efficiency ratio used for regional comparison.",
+    "token_count": 12,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": 0.494140625,
+    "notes": []
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0005",
+    "strategy": "semantic",
+    "text": "Figure 1. Regional output, Q3.",
+    "token_count": 10,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph"
+    ],
+    "boundary_similarity": null,
+    "notes": []
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0006",
+    "strategy": "semantic",
+    "text": "A blue zigzag line representing a graph or waveform.",
+    "token_count": 11,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "figure"
+    ],
+    "boundary_similarity": null,
+    "notes": [
+      "atomic_block"
+    ]
+  },
+  {
+    "chunk_id": "synthetic_sample__semantic__0007",
+    "strategy": "semantic",
+    "text": "J. Alvarez, Regional Director\nInternal use only | Page 1 of 1 | Doc ID: SAMPLE-2026-Q3-001",
+    "token_count": 33,
+    "section_path": null,
+    "pages": [
+      1
+    ],
+    "block_types": [
+      "paragraph",
+      "paragraph"
+    ],
+    "boundary_similarity": null,
+    "notes": []
+  }
+]

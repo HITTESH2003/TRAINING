@@ -1,0 +1,4 @@
+sentence-transformers>=3.0
+einops  # required by nomic-embed-text-v1.5's custom model code
+psycopg[binary]
+pgvector  # registers the `vector` type with psycopg so Python lists round-trip correctly
