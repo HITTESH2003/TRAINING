@@ -30,14 +30,24 @@ One shared virtual environment covers all 6 modules — every package every
 module needs lives in the single root [requirements.txt](./requirements.txt),
 so there's one install, not six.
 
+**The venv lives inside `1. OCR/`, not at the repo root.** Create it there
+specifically — `transformers>=5.2` (needed from Module 1 onward) requires
+Python 3.10+, and on macOS a bare `python3 -m venv` elsewhere on your
+`PATH` can silently pick up an old system Python (3.8) that fails this
+`pip install` with a confusing "no matching distribution" error instead of
+a clear version complaint.
+
 ```bash
+cd "1. OCR"
 python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+python --version              # confirm this actually says 3.10+
+pip install -r ../requirements.txt
 ```
 
-**Requires Python 3.10+** (`transformers`, needed from Module 1 onward,
-won't install on anything older). Each module's own README covers what
-else is specific to that module (e.g. Docker + Postgres from Module 4
+Every later module then reuses this same venv — either `source
+"1. OCR/.venv/bin/activate"` first, or invoke it directly:
+`"1. OCR/.venv/bin/python" script.py`. Each module's own README covers
+what else is specific to that module (e.g. Docker + Postgres from Module 4
 onward).
 
 `.venv/` is intentionally excluded from this repository (see
