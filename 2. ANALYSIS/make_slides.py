@@ -403,7 +403,7 @@ def build() -> None:
         [
             (0, "Counting tokens the right way means loading a real tokenizer -- which means the transformers library, which Module 1 already installed"),
             (0, "Module 2 reuses Module 1's virtual environment directly instead of building its own"),
-            (1, "requirements.txt for this whole module is one line: openpyxl"),
+            (1, "Only new package this module needs is openpyxl -- one line in the repo's shared requirements.txt"),
             (0, "Run it as:  \"../1. OCR/.venv/bin/python\" analyze.py"),
             (0, "A small thing, but a real one -- don't make a student re-download a gigabyte of ML libraries just to count tokens and write a spreadsheet"),
         ],

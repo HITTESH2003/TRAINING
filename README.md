@@ -26,18 +26,20 @@ code.
 
 ## Running any module
 
-Every module after Module 1 reuses Module 1's Python virtual environment
-(`1. OCR/.venv`) rather than installing its own copy of heavy dependencies
-like `torch` and `transformers`. Start with Module 1's README for setup,
-then each subsequent module's README covers what's new for that module
-specifically (e.g. Docker + Postgres from Module 4 onward).
+One shared virtual environment covers all 6 modules — every package every
+module needs lives in the single root [requirements.txt](./requirements.txt),
+so there's one install, not six.
 
 ```bash
-cd "1. OCR"
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+**Requires Python 3.10+** (`transformers`, needed from Module 1 onward,
+won't install on anything older). Each module's own README covers what
+else is specific to that module (e.g. Docker + Postgres from Module 4
+onward).
+
 `.venv/` is intentionally excluded from this repository (see
-`.gitignore`) — it's several GB and fully reproducible from each module's
+`.gitignore`) — it's several GB and fully reproducible from
 `requirements.txt`.

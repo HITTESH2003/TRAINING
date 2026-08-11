@@ -37,7 +37,7 @@ just this project, nothing system-wide). Then:
 cd OCR
 python3 -m venv .venv && source .venv/bin/activate
 python --version          # confirm the venv actually picked up 3.10+
-pip install -r requirements.txt
+pip install -r ../requirements.txt   # one shared file, covers all 6 modules
 ```
 
 First run downloads two models automatically (cached by huggingface_hub):

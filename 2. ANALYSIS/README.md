@@ -14,7 +14,6 @@ per-document summary plus detail sheets for anything worth a second look.
     report.py         builds the Excel workbook
     config.py          default paths
   analyze.py       CLI entrypoint
-  requirements.txt  just openpyxl (see Setup -- everything else is reused)
 ```
 
 ## Setup
@@ -22,12 +21,10 @@ per-document summary plus detail sheets for anything worth a second look.
 This module reuses Module 1's virtual environment rather than installing its
 own multi-GB copy of torch/transformers -- it needs the exact same tokenizer
 (Qwen3.5-0.8B's) to count tokens the way the extraction model actually saw
-them, and that's already sitting in `1. OCR/.venv`. Only `openpyxl` is new:
-
-```bash
-cd "1. OCR"
-./.venv/bin/python -m pip install -r "../2. ANALYSIS/requirements.txt"
-```
+them, and that's already sitting in `1. OCR/.venv`. Everything this module
+needs (just `openpyxl` on top of Module 1's packages) is already covered by
+the root [requirements.txt](../requirements.txt) — if you installed that,
+there's nothing more to do here.
 
 ## Run
 

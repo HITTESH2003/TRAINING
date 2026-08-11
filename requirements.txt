@@ -1,0 +1,36 @@
+# One shared virtual environment for all 6 modules -- install this once
+# from the repo root and every module's code will run.
+#
+#   python3 -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# Grouped by which module first needs each package. Nothing here conflicts
+# across modules; if a future module ever needs a version that clashes with
+# this file, give that module its own requirements.txt for just that
+# package instead of forking this whole file.
+
+# Module 1 (OCR): PDF -> layout detection -> VLM extraction
+PyMuPDF>=1.24
+Pillow
+huggingface_hub
+doclayout-yolo==0.0.3
+transformers>=5.2  # Qwen3.5 architecture support landed in transformers v5.2
+accelerate
+torch
+python-pptx  # slide-deck generation, used by every module's make_slides.py
+
+# Module 2 (Analysis): validation report
+openpyxl
+
+# Module 3 (Chunking): no new packages -- reuses torch/transformers (Module 1)
+# and openpyxl (Module 2) for its semantic chunking and Excel comparison report
+
+# Module 4 (Embedding & Database): embeddings + Postgres/pgvector
+sentence-transformers>=3.0
+einops  # required by nomic-embed-text-v1.5's custom model code
+psycopg[binary]
+pgvector  # registers the `vector` type with psycopg so Python lists round-trip correctly
+numpy  # synthetic benchmark vectors in Module 5's index benchmark
+
+# Module 6 (Summarisation): Streamlit frontend
+streamlit

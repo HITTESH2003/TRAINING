@@ -24,7 +24,7 @@ five different models that aren't really comparable.
 ```bash
 cd "4. EMBEDDING AND DATABASE"
 docker compose up -d                 # Postgres + pgvector, host port 5433
-"../1. OCR/.venv/bin/python" -m pip install -r requirements.txt   # reuses Module 1's venv
+"../1. OCR/.venv/bin/python" -m pip install -r ../requirements.txt   # reuses Module 1's venv; already covers this module
 ```
 
 `docker-compose.yml` maps host port **5433** (not 5432) specifically so this

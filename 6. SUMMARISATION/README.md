@@ -19,7 +19,7 @@ docker compose up -d
 
 ```bash
 cd "6. SUMMARISATION"
-"../1. OCR/.venv/bin/python" -m pip install -r requirements.txt   # just streamlit; everything else is already in the shared venv
+"../1. OCR/.venv/bin/python" -m pip install -r ../requirements.txt   # covers this module (streamlit) plus everything already installed
 ```
 
 ## Run
