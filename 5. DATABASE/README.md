@@ -29,6 +29,17 @@ Four features made it the default choice for this whole pipeline, not just
   truth about whether an index is actually being used, not just whether you
   created one.
 
+## New to this? Start with `step_by_step/`
+
+[step_by_step/](./step_by_step/) has five standalone scripts — connect and
+view data, embedding search, metadata-filtered search, full-text search,
+index + `EXPLAIN ANALYZE` — each one linear, no imports between files, no
+abstraction to trace through. Read the file top to bottom and that's the
+whole thing. This is the easiest place to actually see how the code works.
+
+The rest of this README covers `db_features/` + `run_demos.py`, the
+reusable version of the same ideas that produces the real report below.
+
 ## Run
 
 ```bash
