@@ -12,3 +12,7 @@ __pycache__/
 # Editors
 .vscode/
 .idea/
+
+# Office lock files (created while a .pptx/.xlsx is open)
+~$*.pptx
+~$*.xlsx

@@ -367,15 +367,16 @@ def build() -> None:
         note="The dense legal proclamation and the structured synthetic page (table + chart + formula) land almost identically dense -- ~510 tokens/page. The NASA fact sheet's plain prose runs at roughly half that. Content density drives this number more than document length does.",
     )
 
-    # 8 -- what else gets measured
+    # 8 -- layout analysis, the other axis
     add_bullet_slide(
-        prs, "What Else Gets Measured", "Beyond Just Tokens",
+        prs, "Layout Analysis", "The Other Half of Validation",
         [
-            (0, "How many images and tables actually made it into the extracted text, versus what the source document had"),
-            (0, "How many logos, signatures, stamps/seals, and other visual artifacts were detected, and where"),
-            (0, "How many regions the layout detector itself flagged as uncertain -- it wasn't sure what it was looking at"),
-            (0, "How many regions were dropped entirely and excluded from the document -- some correctly (headers/footers), some not"),
-            (0, "How many tables came out structurally broken -- malformed, not just imperfect"),
+            (0, "Token counting tells you how much content came out. It says nothing about whether the layout detector actually understood the page"),
+            (0, "Module 1's layout detector already assigns a confidence score to every region it finds -- Module 2 doesn't compute this, it surfaces what already exists"),
+            (1, "low_confidence_regions -- the detector found something there, but wasn't sure what"),
+            (1, "dropped_regions -- the detector excluded a region entirely: correctly (headers/footers), or not (see the case study ahead)"),
+            (0, "Same source also covers artifacts (logos, signatures, stamp/seals) and malformed tables -- structural failures, not content-volume ones"),
+            (0, "Two independent questions: token analysis asks “how much came out,” layout analysis asks “did it even see the page correctly”"),
         ],
         next_page(),
     )
@@ -406,7 +407,20 @@ def build() -> None:
         color=ACCENT_BAD,
     )
 
-    # 11 -- validation as anomaly detection habit
+    # 11 -- human in the loop
+    add_bullet_slide(
+        prs, "Human-in-the-Loop, By Design", "A Flag Is Only Useful If Someone Can Act On It",
+        [
+            (0, "Every flagged row -- low confidence, dropped region, malformed table -- carries a page number and a bounding box back to the original document"),
+            (0, "That's not incidental: it's what turns a flag into a 30-second check instead of a full re-read of the document"),
+            (0, "The loop: detector flags an uncertain region → it lands in the Excel workbook → a person looks at that exact spot on the original page → confirms a real problem, or clears it as a false alarm"),
+            (1, "The logo case study on the previous slide is this loop working end to end -- a two-minute human check catching a bug automation alone missed"),
+            (0, "What this module doesn't do yet: feed a human's correction back into re-thresholding or retraining the detector -- that's the natural next step, not built here"),
+        ],
+        next_page(),
+    )
+
+    # 12 -- validation as anomaly detection habit
     add_bullet_slide(
         prs, "A Validation Habit", "Tokens/Page as an Anomaly Signal",
         [
@@ -419,7 +433,22 @@ def build() -> None:
         next_page(),
     )
 
-    # 12 -- what counts as a document
+    # 13 -- sampling at scale
+    add_bullet_slide(
+        prs, "Sampling At Scale", "From 3 Documents to 3,000",
+        [
+            (0, "This module's corpus is 3 real documents -- reviewing every flagged row by hand is trivial at that size. It stops being trivial well before you reach a few thousand"),
+            (0, "The fix isn't reviewing everything, and it isn't reviewing a random handful either -- it's spending human attention where the model already told you it's unsure"),
+            (1, "Targeted review, 100% coverage -- every document with any low-confidence region, dropped region, or malformed table. Usually a small minority of the corpus, which is exactly why full coverage stays affordable"),
+            (1, "Random audit sample of the rest -- a small percentage (5-10% is a common starting point) of documents that came back with zero flags, specifically to catch cases where the detector is confidently wrong"),
+            (0, "Why the second bucket matters: a validation system that only ever double-checks its own doubts can't catch its own blind spots -- the audit sample is how you find out if “zero flags” is actually trustworthy"),
+            (0, "Tokens/page outliers (previous slide) feed the same triage -- an outlier is one more reason to pull a document into the reviewed set even with zero layout flags"),
+        ],
+        next_page(),
+        note="This is methodology, not a result -- honest about what a 3-document teaching corpus can and can't demonstrate. The same low_confidence_count / dropped_region_count / tokens_per_page columns already in the Excel report are exactly what a sampling rule would key off of at real scale.",
+    )
+
+    # 14 -- what counts as a document
     add_bullet_slide(
         prs, "A Quiet Detail", "Partial Runs Get Skipped, Not Guessed At",
         [
@@ -430,13 +459,14 @@ def build() -> None:
         next_page(),
     )
 
-    # 13 -- wrap-up
+    # 15 -- wrap-up
     add_bullet_slide(
         prs, "Wrap-Up", "Why This Module Matters",
         [
             (0, "It turns “the pipeline didn't crash” into “here's proof this document is actually usable”"),
-            (0, "It lets one person identify which of many documents need a closer look, without opening every single one"),
-            (0, "It turns a hidden extraction bug into a traceable, fixable finding, instead of a silent quality problem downstream"),
+            (0, "Two independent checks, not one -- token analysis for how much came out, layout analysis for whether the model saw the page correctly"),
+            (0, "It's human-in-the-loop by design -- every flag carries an exact way back to the page a person needs to look at"),
+            (0, "It scales past hand-checking every document -- targeted review of what's flagged, random audits of what isn't, once the corpus is bigger than 3 files"),
             (0, "Next: Module 3 takes this same validated output and turns it into retrieval-ready chunks -- recursive, semantic, and hierarchical strategies, compared on the same real documents"),
         ],
         next_page(),
