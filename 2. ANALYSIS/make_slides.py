@@ -343,13 +343,35 @@ def build() -> None:
         next_page(),
     )
 
-    # 6 -- the core question
+    # 6a -- words vs tokens
     add_bullet_slide(
-        prs, "The Core Question", "How Many Tokens Per Page, Really?",
+        prs, "Words vs. Tokens", "Why “Word Count” Isn't Enough",
         [
-            (0, "“Word count” is not “token count.” A word can be one token, several tokens, or a fraction of a shared token -- it depends on the tokenizer"),
-            (0, "Why this matters here specifically: every downstream step (chunking, any embedding or LLM call) is budgeted in tokens, not words or characters"),
-            (0, "So this module counts tokens with the SAME tokenizer the extraction model uses, rather than estimating -- an approximation here would quietly mislead every step after it"),
+            (0, "A word can be one token, several tokens, or a fraction of a token shared with other words -- it depends entirely on the tokenizer"),
+            (0, "So two documents with the same word count can have very different token counts, and vice versa"),
+            (0, "Word count is a rough proxy at best. If token count is what actually matters downstream, word count isn't a stand-in for it"),
+        ],
+        next_page(),
+    )
+
+    # 6b -- why it matters here
+    add_bullet_slide(
+        prs, "Why It Matters Here", "Every Downstream Step Is Budgeted in Tokens",
+        [
+            (0, "Chunking (Module 3) splits documents by token count, not word count or character count"),
+            (0, "Every embedding call and every LLM call downstream has a token limit, not a word limit"),
+            (0, "Get the token count wrong here, and every budget calculated from it downstream is wrong too"),
+        ],
+        next_page(),
+    )
+
+    # 6c -- how it's counted
+    add_bullet_slide(
+        prs, "How It's Counted", "The Same Tokenizer the Extraction Model Used",
+        [
+            (0, "This module counts tokens with the exact tokenizer Qwen3.5-0.8B (Module 1's extraction model) uses"),
+            (0, "Not an estimate, not a generic word-to-token multiplier -- the real tokenizer, run for real, on every document"),
+            (0, "An approximation here wouldn't just be slightly off -- it would quietly mislead every token-budgeted step that reads this number afterward"),
         ],
         next_page(),
     )
@@ -433,16 +455,46 @@ def build() -> None:
         next_page(),
     )
 
-    # 13 -- sampling at scale
+    # 13a -- the scaling problem
     add_bullet_slide(
-        prs, "Sampling At Scale", "From 3 Documents to 3,000",
+        prs, "The Scaling Problem", "Reviewing Everything Doesn't Scale",
         [
-            (0, "This module's corpus is 3 real documents -- reviewing every flagged row by hand is trivial at that size. It stops being trivial well before you reach a few thousand"),
-            (0, "The fix isn't reviewing everything, and it isn't reviewing a random handful either -- it's spending human attention where the model already told you it's unsure"),
-            (1, "Targeted review, 100% coverage -- every document with any low-confidence region, dropped region, or malformed table. Usually a small minority of the corpus, which is exactly why full coverage stays affordable"),
-            (1, "Random audit sample of the rest -- a small percentage (5-10% is a common starting point) of documents that came back with zero flags, specifically to catch cases where the detector is confidently wrong"),
-            (0, "Why the second bucket matters: a validation system that only ever double-checks its own doubts can't catch its own blind spots -- the audit sample is how you find out if “zero flags” is actually trustworthy"),
-            (0, "Tokens/page outliers (previous slide) feed the same triage -- an outlier is one more reason to pull a document into the reviewed set even with zero layout flags"),
+            (0, "This module's corpus is 3 real documents -- reviewing every flagged row by hand is trivial at that size"),
+            (0, "That stops being trivial well before you reach a few hundred documents, let alone a few thousand"),
+            (0, "The fix isn't reviewing everything by hand, and it isn't reviewing a random handful either"),
+        ],
+        next_page(),
+    )
+
+    # 13b -- targeted review
+    add_bullet_slide(
+        prs, "Step 1: Targeted Review", "Full Coverage Where It's Cheap",
+        [
+            (0, "Review 100% of documents with any low-confidence region, dropped region, or malformed table -- no sampling at all"),
+            (0, "This bucket is usually a small minority of the corpus, which is exactly why full coverage of it stays affordable even at scale"),
+            (0, "The model already told you where it's unsure. Step 1 is just not ignoring that signal"),
+        ],
+        next_page(),
+    )
+
+    # 13c -- random audit sampling
+    add_bullet_slide(
+        prs, "Step 2: Random Audits", "Catching What the Model Didn't Flag",
+        [
+            (0, "Pull a small random sample -- 5-10% is a common starting point -- from documents that came back with zero flags"),
+            (0, "A validation system that only ever double-checks its own doubts can never catch its own blind spots"),
+            (0, "The audit sample is how you find out whether “zero flags” is actually trustworthy, or just confidently wrong"),
+        ],
+        next_page(),
+    )
+
+    # 13d -- putting it together
+    add_bullet_slide(
+        prs, "Putting It Together", "A Simple Sampling Rule",
+        [
+            (0, "Review: 100% of flagged documents, plus a random 5-10% audit of the clean bucket, plus any tokens/page outlier (previous slide) -- flagged or not"),
+            (0, "If the audit sample starts turning up real problems, raise the audit percentage -- the hit rate tells you whether 5-10% is actually enough"),
+            (1, "e.g., audits at 5% keep finding real issues → raise to 10-15% and re-check until it mostly comes back clean"),
         ],
         next_page(),
         note="This is methodology, not a result -- honest about what a 3-document teaching corpus can and can't demonstrate. The same low_confidence_count / dropped_region_count / tokens_per_page columns already in the Excel report are exactly what a sampling rule would key off of at real scale.",
