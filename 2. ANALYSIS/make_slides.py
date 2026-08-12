@@ -20,7 +20,7 @@ from pathlib import Path
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
 ROOT = Path(__file__).resolve().parent
@@ -32,15 +32,10 @@ WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 INK = RGBColor(0x1A, 0x1D, 0x27)
 MUTED = RGBColor(0x8A, 0x93, 0xA6)
 MUTED_DARK = RGBColor(0x5B, 0x63, 0x74)
-ACCENT = RGBColor(0x3E, 0x8E, 0xDE)       # blue -- structural/technical content
-ACCENT_WARM = RGBColor(0xF2, 0xA6, 0x3D)  # amber -- "did you know" slides
-ACCENT_GOOD = RGBColor(0x4C, 0xAF, 0x7D)  # green -- real code slides
-ACCENT_BAD = RGBColor(0xE0, 0x6C, 0x5C)   # red -- real findings / case studies
-CODE_BG = RGBColor(0x1E, 0x1E, 0x2E)
-CODE_TEXT = RGBColor(0xA6, 0xE3, 0xA1)
+ACCENT = RGBColor(0x3E, 0x8E, 0xDE)       # blue -- structural content
+ACCENT_BAD = RGBColor(0xE0, 0x6C, 0x5C)   # red -- real findings / root cause analysis
 
 FONT_BODY = "Calibri"
-FONT_CODE = "Consolas"
 
 SLIDE_W = Inches(13.333)
 SLIDE_H = Inches(7.5)
@@ -168,54 +163,6 @@ def add_bullet_slide(prs, kicker, title, bullets, page, color=ACCENT, note=None)
     if note:
         _textbox(slide, Inches(0.8), Inches(6.85), Inches(11.7), Inches(0.45), note, 12, MUTED_DARK, italic=True)
 
-    _page_number(slide, page)
-    return slide
-
-
-def add_fact_slide(prs, kicker, title, bullets, page, color=ACCENT_WARM):
-    slide = add_bullet_slide(prs, kicker, title, bullets, page, color=color)
-    tag = slide.shapes.add_textbox(Inches(10.6), Inches(0.42), Inches(2.0), Inches(0.5))
-    tf = tag.text_frame
-    p = tf.paragraphs[0]
-    p.alignment = PP_ALIGN.RIGHT
-    run = p.add_run()
-    run.text = "★ DID YOU KNOW"
-    run.font.size = Pt(12)
-    run.font.bold = True
-    run.font.color.rgb = ACCENT_WARM
-    return slide
-
-
-def add_code_slide(prs, kicker, title, label, code_text, note, page):
-    slide = _blank(prs)
-    _set_bg(slide, WHITE)
-    _accent_bar(slide, ACCENT_GOOD)
-    _kicker(slide, kicker, color=ACCENT_GOOD)
-    _textbox(slide, Inches(0.7), Inches(0.85), Inches(11.9), Inches(0.7), title, 28, INK, bold=True)
-    _textbox(slide, Inches(0.8), Inches(1.55), Inches(11), Inches(0.4), label, 14, MUTED_DARK, bold=True)
-
-    card = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(2.0), Inches(11.7), Inches(4.0))
-    card.fill.solid()
-    card.fill.fore_color.rgb = CODE_BG
-    card.line.fill.background()
-    tf = card.text_frame
-    tf.word_wrap = True
-    tf.margin_left = Inches(0.35)
-    tf.margin_right = Inches(0.35)
-    tf.margin_top = Inches(0.3)
-    tf.margin_bottom = Inches(0.3)
-    tf.vertical_anchor = MSO_ANCHOR.TOP
-    first = True
-    for line in code_text.split("\n"):
-        p = tf.paragraphs[0] if first else tf.add_paragraph()
-        first = False
-        run = p.add_run()
-        run.text = line if line.strip() else " "
-        run.font.size = Pt(14)
-        run.font.name = FONT_CODE
-        run.font.color.rgb = CODE_TEXT
-
-    _textbox(slide, Inches(0.8), Inches(6.2), Inches(11.7), Inches(1.0), note, 14, MUTED_DARK, italic=True)
     _page_number(slide, page)
     return slide
 
@@ -353,7 +300,7 @@ def build() -> None:
         kicker="Module 2 · Analysis",
         title="Validating What OCR Actually Extracted",
         subtitle="Module 1 produces a markdown file and says it's done. This module asks: is it actually right?",
-        footer="analyze.py  ·  Qwen/Qwen3.5-0.8B tokenizer  ·  openpyxl",
+        footer="Identification  ·  Validation  ·  Root Cause Analysis",
     )
     next_page()
 
@@ -373,39 +320,25 @@ def build() -> None:
         next_page(),
     )
 
-    # 3 -- fun fact: tokenization history
-    add_fact_slide(
-        prs, "Did you know", "“Tokens” Are Newer Than You'd Think",
+    # 4 -- how analysis helps
+    add_bullet_slide(
+        prs, "How This Helps", "Three Things This Module Actually Buys You",
         [
-            (0, "Byte-Pair Encoding (BPE) -- the technique behind most modern LLM tokenizers -- was originally a 1994 data-COMPRESSION algorithm, not an AI technique at all"),
-            (0, "It was repurposed for language models in 2015-2016, first for machine translation, years before GPT existed"),
-            (0, "There is no universal “token” -- every model family (GPT, Qwen, Llama, Claude...) trains its own tokenizer on its own text, so the same sentence can produce a different token count in each one"),
-            (1, "This is exactly why this module loads Qwen3.5-0.8B's own tokenizer instead of guessing -- see the next few slides"),
+            (0, "Identification -- given 50 processed documents, which ones likely have an extraction problem, from the numbers alone, before opening a single file"),
+            (0, "Validation -- confirm a document that finished without errors is actually trustworthy enough to move downstream into chunking and embedding"),
+            (0, "Root cause analysis -- when a document does look wrong, trace it back to the exact page and region that caused it, not just know something's off"),
+            (0, "All three come from the same source: real per-document metrics, computed once, put in front of a human who can actually question them"),
         ],
         next_page(),
     )
 
-    # 4 -- what module 2 does
+    # 5 -- overview
     add_bullet_slide(
-        prs, "Overview", "What analyze.py Actually Does",
+        prs, "Overview", "What This Module Does",
         [
-            (0, "Reads every completed run in Module 1's output/ folder -- the .md file plus metadata.json"),
-            (0, "Computes, per document: page count, word count, real token count, tokens/page, images and tables found in the body, artifact counts, low-confidence region count, dropped region count"),
-            (0, "Writes one Excel workbook: a Summary sheet (one row per document) plus three detail sheets for anything worth a second look"),
-            (0, "That's the whole module -- three files: stats.py (compute), tokenizer_util.py (count), report.py (write the workbook)"),
-        ],
-        next_page(),
-    )
-
-    # 5 -- setup: reuse venv
-    add_bullet_slide(
-        prs, "Engineering Detail", "No New 3GB Install",
-        [
-            (0, "Counting tokens the right way means loading a real tokenizer -- which means the transformers library, which Module 1 already installed"),
-            (0, "Module 2 reuses Module 1's virtual environment directly instead of building its own"),
-            (1, "Only new package this module needs is openpyxl -- one line in the repo's shared requirements.txt"),
-            (0, "Run it as:  \"../1. OCR/.venv/bin/python\" analyze.py"),
-            (0, "A small thing, but a real one -- don't make a student re-download a gigabyte of ML libraries just to count tokens and write a spreadsheet"),
+            (0, "Reads every completed document Module 1 produced -- the extracted text plus its layout metadata"),
+            (0, "Computes, per document: page count, real token count, tokens/page, images and tables found, artifact counts, low-confidence region count, dropped region count"),
+            (0, "Writes one Excel workbook: a Summary sheet (one row per document) plus detail sheets for anything worth a second look"),
         ],
         next_page(),
     )
@@ -415,38 +348,13 @@ def build() -> None:
         prs, "The Core Question", "How Many Tokens Per Page, Really?",
         [
             (0, "“Word count” is not “token count.” A word can be one token, several tokens, or a fraction of a shared token -- it depends on the tokenizer"),
-            (0, "Why this matters here specifically: every downstream step (Module 3's chunking, any embedding or LLM call) is budgeted in tokens, not words or characters"),
-            (0, "So “how to check tokens per page” has one honest answer: load the SAME tokenizer the extraction model uses, and count what it actually produces"),
-            (1, "Not estimate it. Not divide characters by 4. Count it."),
+            (0, "Why this matters here specifically: every downstream step (chunking, any embedding or LLM call) is budgeted in tokens, not words or characters"),
+            (0, "So this module counts tokens with the SAME tokenizer the extraction model uses, rather than estimating -- an approximation here would quietly mislead every step after it"),
         ],
         next_page(),
     )
 
-    # 7 -- real code: tokenizer_util.py
-    add_code_slide(
-        prs, "The Actual Code", "How Tokens/Page Is Actually Computed",
-        "analysis/tokenizer_util.py",
-        "from transformers import AutoTokenizer\n\n"
-        "_TOKENIZER = AutoTokenizer.from_pretrained(config.TOKENIZER_MODEL_ID)\n\n"
-        "def count_tokens(text: str) -> int:\n"
-        "    return len(_TOKENIZER(text, add_special_tokens=False)[\"input_ids\"])\n\n"
-        "# tokens_per_page = count_tokens(markdown_text) / page_count",
-        "config.TOKENIZER_MODEL_ID is \"Qwen/Qwen3.5-0.8B\" -- the exact model Module 1 used to extract the text in the first place.",
-        next_page(),
-    )
-
-    # 8 -- fun fact: token vs word
-    add_fact_slide(
-        prs, "Did you know", "A “Word” Can Be Several Tokens — or Less Than One",
-        [
-            (0, "Common English words are usually 1 token. Rare words, names, and numbers routinely split into 2-4 tokens"),
-            (0, "Punctuation-dense, symbol-heavy text (legal citations, document IDs, markdown headers) tokenizes LESS efficiently than plain prose -- more tokens for the same character count"),
-            (0, "That's not a guess -- it's exactly what shows up two slides from now, comparing real documents from this project"),
-        ],
-        next_page(),
-    )
-
-    # 9 -- real numbers table
+    # 7 -- real numbers table
     add_table_slide(
         prs, "Real Numbers", "Tokens Per Page, Three Real Documents",
         ["Document", "Pages", "Tokens", "Tokens / Page"],
@@ -459,89 +367,77 @@ def build() -> None:
         note="The dense legal proclamation and the structured synthetic page (table + chart + formula) land almost identically dense -- ~510 tokens/page. The NASA fact sheet's plain prose runs at roughly half that. Content density drives this number more than document length does.",
     )
 
-    # 10 -- what else gets measured
+    # 8 -- what else gets measured
     add_bullet_slide(
         prs, "What Else Gets Measured", "Beyond Just Tokens",
         [
-            (0, "images_in_body / tables_in_body -- counted directly from the markdown (![...] and <table occurrences)"),
-            (0, "logo_count / signature_count / stamp_seal_count / other_artifact_count -- tallied from metadata.json's artifacts_detected"),
-            (0, "low_confidence_count -- regions the layout detector itself flagged as uncertain"),
-            (0, "dropped_region_count -- regions excluded from the document body (headers/footers, or misclassified content -- see Module 1's README)"),
-            (0, "malformed_table_count -- any <table> that failed a basic HTML tag-balance check"),
-            (0, "Plus native PDF metadata: title, author, creation date -- blank when the source PDF never set them"),
+            (0, "How many images and tables actually made it into the extracted text, versus what the source document had"),
+            (0, "How many logos, signatures, stamps/seals, and other visual artifacts were detected, and where"),
+            (0, "How many regions the layout detector itself flagged as uncertain -- it wasn't sure what it was looking at"),
+            (0, "How many regions were dropped entirely and excluded from the document -- some correctly (headers/footers), some not"),
+            (0, "How many tables came out structurally broken -- malformed, not just imperfect"),
         ],
         next_page(),
     )
 
-    # 11 -- excel report structure
+    # 9 -- excel report structure
     add_bullet_slide(
-        prs, "The Deliverable", "One Workbook, Four Sheets",
+        prs, "The Deliverable", "One Workbook, Built for Validation",
         [
-            (0, "Summary -- one row per document, every stat from the last two slides in one place"),
-            (0, "Artifacts Detail -- one row per detected logo/signature/stamp_seal: page, description, bounding box"),
+            (0, "Summary -- one row per document, every stat from the last two slides in one place, built to be scanned fast"),
+            (0, "Artifacts Detail -- one row per detected logo/signature/stamp: page, description, exact location"),
             (0, "Low Confidence Regions -- one row per region the layout detector wasn't sure about"),
-            (0, "Dropped Regions -- one row per region excluded from the body, including anything misclassified as page furniture"),
-            (1, "Cross-reference any bbox here against Module 1's output/<doc>/annotated/ images to see exactly what was found"),
+            (0, "Dropped Regions -- one row per region excluded from the document, including anything misclassified and dropped by mistake"),
+            (1, "Every flagged row carries a location back to the original page -- a finding is only useful if it can be checked"),
         ],
         next_page(),
     )
 
-    # 12 -- fun fact: spreadsheet history
-    add_fact_slide(
-        prs, "Did you know", "The Spreadsheet Predates the Personal Computer Boom",
-        [
-            (0, "VisiCalc (1979) is widely credited as the first electronic spreadsheet -- and the first “killer app” that sold people on owning a computer at all"),
-            (0, "Excel itself shipped in 1985, for the original Apple Macintosh, two years before it ever ran on Windows"),
-            (0, "Forty-plus years later, it's still the default format for “give me a report I can actually open and check” -- which is exactly why this module writes .xlsx and not just another .json file"),
-        ],
-        next_page(),
-    )
-
-    # 13 -- real case study: dropped regions traceability
+    # 10 -- root cause analysis: real case study
     add_bullet_slide(
-        prs, "Real Case Study", "Tracing a Dropped Region Back to a Real Bug",
+        prs, "Root Cause Analysis", "Tracing a Dropped Region Back to a Real Bug",
         [
-            (0, "synthetic_sample's Dropped Regions sheet has a row: class “abandon”, confidence 0.46, bbox [1312, 117, 1521, 329]"),
-            (0, "That bbox is the document's logo -- a real image region the layout detector misclassified as page furniture and dropped before it ever reached the VLM's figure classifier"),
-            (0, "It's visible directly in Module 1's output/synthetic_sample/annotated/page_001.png: a gray “abandon” box drawn right over the logo"),
-            (1, "This is the whole point of keeping Dropped Regions instead of silently discarding them -- a bounding box and a confidence score turn a hidden bug into a traceable, screenshot-able one"),
+            (0, "One document's Dropped Regions sheet flagged a region: low confidence, a specific location on the page"),
+            (0, "That location turned out to be the document's logo -- a real image the layout detector misclassified as page furniture and dropped before extraction ever saw it"),
+            (0, "Looking at that exact location on the original page image confirmed it immediately -- a visible box drawn right over the logo"),
+            (1, "This is the whole point of keeping every dropped region instead of silently discarding them -- it turns a hidden bug into something traceable, and something fixable"),
         ],
         next_page(),
         color=ACCENT_BAD,
     )
 
-    # 14 -- validation as anomaly detection habit
+    # 11 -- validation as anomaly detection habit
     add_bullet_slide(
         prs, "A Validation Habit", "Tokens/Page as an Anomaly Signal",
         [
             (0, "There's no universal “correct” tokens-per-page number -- it depends entirely on the document type"),
             (0, "But once you have it for a batch of similar documents, an outlier is worth a look:"),
             (1, "Much LOWER than its peers -- possible sign of missed or truncated content"),
-            (1, "Much HIGHER than its peers -- possible sign of garbled or repeated OCR output (Module 1's own README documents a duplicate-detection bug that does exactly this)"),
-            (0, "The value of this sheet isn't any single number -- it's being able to scan 50 rows and immediately see which ones don't look like the rest"),
+            (1, "Much HIGHER than its peers -- possible sign of garbled or repeated extraction output"),
+            (0, "The value isn't any single number -- it's being able to scan 50 rows and immediately see which ones don't look like the rest"),
         ],
         next_page(),
     )
 
-    # 15 -- what counts as a document
+    # 12 -- what counts as a document
     add_bullet_slide(
         prs, "A Quiet Detail", "Partial Runs Get Skipped, Not Guessed At",
         [
-            (0, "A folder in Module 1's output/ only counts as “a document” if it has BOTH <name>.md AND metadata.json"),
-            (0, "An interrupted or still-running Module 1 job leaves a folder with pages/ and maybe some images/, but no .md and no metadata.json yet"),
-            (0, "analyze.py silently skips those rather than guessing at partial data -- a document either finished, or it isn't analyzed at all"),
+            (0, "A document only gets analyzed once its extraction has actually finished, not while it's still in progress"),
+            (0, "An interrupted or still-running extraction leaves incomplete output"),
+            (0, "That incomplete output gets skipped rather than guessed at -- a document either finished cleanly, or it isn't validated at all"),
         ],
         next_page(),
     )
 
-    # 16 -- wrap-up
+    # 13 -- wrap-up
     add_bullet_slide(
-        prs, "Wrap-Up", "What Module 2 Actually Produces",
+        prs, "Wrap-Up", "Why This Module Matters",
         [
-            (0, "ocr_analysis_report.xlsx -- Summary + 3 detail sheets, one workbook covering every document Module 1 has processed"),
-            (0, "Real, exact token counts -- from the same tokenizer the extraction model used, not an approximation"),
-            (0, "A traceable audit trail -- every flagged region carries a bbox back to Module 1's annotated screenshots"),
-            (0, "Next: Module 3 takes this same output and turns it into retrieval-ready chunks -- recursive, semantic, and hierarchical strategies, compared on the same real documents"),
+            (0, "It turns “the pipeline didn't crash” into “here's proof this document is actually usable”"),
+            (0, "It lets one person identify which of many documents need a closer look, without opening every single one"),
+            (0, "It turns a hidden extraction bug into a traceable, fixable finding, instead of a silent quality problem downstream"),
+            (0, "Next: Module 3 takes this same validated output and turns it into retrieval-ready chunks -- recursive, semantic, and hierarchical strategies, compared on the same real documents"),
         ],
         next_page(),
     )
